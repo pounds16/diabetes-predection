@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabities Checker</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+      
+<style> 
+body{
+    background-image: url("https://shorturl.at/bAIK4");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+input[type="number"] {
+    width: 50px;
+    height: 20px;
+    padding: 0.4em;
+    border: none;
+    border-radius: 5px;
+}
+
+header {
+    font-size: 30px;
+    color: #6515b0b4;
+    padding: 2em;
+}
+
+span {
+    color: red;
+    font-size: 12px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #82828292;
+    height: 80vh;
+    width: 90%;
+    margin: 5em;
+}
+
+.name-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-div > input {
+    width: 40%;
+    border: none;
+    padding: 0.4em;
+    border-radius: 3px;
+}
+
+.firstChild div, .secondChild div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.6em;
+}
+
+.firstChild div:first-child, .secondChild div:first-child {
+    margin-right: 10em;
+}
+
+.firstChild {
+    display: flex;
+    padding: 2em 0;
+    gap: 20px;
+    align-items: start;
+    justify-content: start;
+}
+
+.secondChild {
+    display: flex;
+    gap: 20px;
+    align-items: start;
+    justify-content: start;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    align-items: start;
+}
+
+button {
+    background-color: #018b0162;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #ffffff;
+}
+
+
+
+</style>
+
+<body>
+   <section class="container">
+    <header>DIABETES PROGNOSE</header>
+    <form action="{{ url_for('predict') }}" method="post">
+       
+        <div class="firstChild">
+            <div>
+                <label for="pregnancies">Pregnancies<span><sup>*</sup></span>: </label>
+                <input type="number" name="pregnancies" id="pregnancies" min="" max="" required>
+                <p>(E.g 0 for male)</p>
+            </div>
+            <div>
+                <label for="glucose">Glucose(mg/dL)<span><sup>*</sup></span>: </label>
+                <input type="number" name="glucose" id="glucose" min="80" max="199" required>
+                <p>(E.g 80)</p>
+            </div>
+            <div>
+                <label for="BP">BP(mmHg)<span><sup>*</sup></span>: </label>
+                <input type="number" name="BP" id="BP" min="" max="" required>
+                <p>(E.g 60)</p>
+            </div>
+            <div>
+                <label for="skin-thickness">Skin Thickness (mm)<span><sup>*</sup></span>: </label>
+                <input type="number" name="skin-thickness" id="skin-thickness" min="" max="" required>
+                <p>(E.g 20)</p>
+            </div>
+        </div>
+        <div class="secondChild">
+            <div>
+                <label for="insulin">Insulin Level<span><sup>*</sup></span>: </label>
+                <input type="number" name="insulin" id="insulin" min="" max="" required>
+                <p>(E.g 0)</p>
+            </div>
+            <div>
+                <label for="BMI">BMI(kg/m<sup>2</sup>)<span><sup>*</sup></span>: </label>
+                <input type="test" name="BMI" id="BMI" min="" max="" required>
+                <p>(E.g 100)</p>
+            </div> 
+            <div>
+                <label for="DP">DP Function<span><sup>*</sup></span>: </label>
+                <input type="test" name="DP" id="DP" min="" max="" required>
+                <p>(E.g 1)</p>
+            </div>
+            <div>
+                <label for="age">Age (years)<span><sup>*</sup></span>: </label>
+                <input type="number" name="age" id="age" min="" max="" required>
+                <p>(E.g 15)</p>
+            </div>
+        </div>
+
+        <div class="btn-div">
+            <a href="/">RESET</a>
+            <button>SUBMIT QUERY</button>
+        </div>
+        <h2>{{ prediction_text }}</h2>
+    </form>
+   </section>
+</body>
+</html>    
